@@ -1,8 +1,8 @@
 # Downloaddit ⬇️ 
 
 ## Dependencies
-⋅⋅* wget
-⋅⋅* ffmpeg
+* wget
+* ffmpeg
 
 ## Usage
 ```
