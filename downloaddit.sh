@@ -27,11 +27,6 @@ function main() {
         removeFiles
 
         echo "Done! Video saved in $videoOutput"
-                
-        echo $openVideo
-        if [ $openVideo -eq 1 ]; then                
-                mpv "$videoOutput"
-        fi
 }
 
 function downloadVideo() {
