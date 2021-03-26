@@ -18,24 +18,33 @@ function main() {
         videoURL=$(parseURL)
         
         echo "Downloading video..."
-        downloadVideo "$videoURL"
-
-        echo "Mergin audio into the video..."
-        mergeAudioVideo
+        mergeAudioVideo $videoURL
 
         echo "Cleaning up the mess..."
         removeFiles
 
+<<<<<<< HEAD
+        echo "Done! Video saved in $videoOutput"     
+=======
         echo "Done! Video saved in $videoOutput"
+>>>>>>> 13a4fadfb374bf6e26ca3cae402e97f2548c44ef
 }
 
 function downloadVideo() {
-        wget "$1/DASH_720.mp4" && 
-        wget "$1/DASH_audio.mp4"
+        for SIZE in 720 480 96; do
+                wget -q "$1/DASH_$SIZE.mp4" -O - && break
+        done
+}
+function downloadAudio(){
+        wget -q "$1/DASH_audio.mp4" -O -
 }
 
 function mergeAudioVideo(){
-        ffmpeg -i "DASH_720.mp4" -i "DASH_audio.mp4" -c:v copy -c:a aac "$videoOutput"
+        if wget -q --spider "$1/DASH_audio.mp4"; then
+                ffmpeg -i <(downloadVideo $1) -i <(downloadAudio $1) -c:v copy -c:a aac "$videoOutput"
+        else
+                downloadVideo "$1" > "$videoOutput"
+        fi
 }
 
 function parseURL() {
