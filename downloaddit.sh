@@ -23,11 +23,9 @@ function main() {
         echo "Cleaning up the mess..."
         removeFiles
 
-<<<<<<< HEAD
         echo "Done! Video saved in $videoOutput"     
-=======
+
         echo "Done! Video saved in $videoOutput"
->>>>>>> 13a4fadfb374bf6e26ca3cae402e97f2548c44ef
 }
 
 function downloadVideo() {
