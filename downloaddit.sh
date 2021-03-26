@@ -24,8 +24,6 @@ function main() {
         removeFiles
 
         echo "Done! Video saved in $videoOutput"     
-
-        echo "Done! Video saved in $videoOutput"
 }
 
 function downloadVideo() {
